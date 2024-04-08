@@ -1,0 +1,39 @@
+---
+import Position from "../components/position.astro"
+import experiences from "../data/experience.json"
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Shawn Lee</title>
+	</head>
+	<body>
+		<h1>Shawn Lee</h1>
+		<h2>Machine Learning Engineer</h2>
+		<p>I write code for deep neural networks.</p>
+
+		<h3>About</h3>
+		<p>Nowadays, I mostly work on computer vision.</p>
+		<p>When I'm not coding, I volunteer.</p>
+		
+		<h3>Experience</h3>
+		<ul>
+			{experiences.map((position) => 
+				<li>
+					<Position
+						title={position.title}
+						company={position.company}
+						startDate={position.startDate}
+						endDate={position.endDate}
+						description={position.description}
+					/>
+				</li>
+			)}
+		</ul>
+		<a href="/resume.pdf">Resume</a>
+	</body>
+</html>
