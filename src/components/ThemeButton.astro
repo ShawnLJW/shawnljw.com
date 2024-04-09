@@ -1,0 +1,21 @@
+<button id="themeToggle" class="w-16 h-8 rounded-2xl shadow-inner bg-zinc-200 shadow-zinc-600 dark:bg-zinc-700">
+    <div class="w-8 h-8 rounded-2xl shadow-2xl shadow-black transition-transform bg-white dark:bg-zinc-100 dark:float-right"></div>
+    <span class="hidden">Switch Theme</span>
+</button>
+
+<script>
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        const element = document.documentElement;
+        element.classList.add("dark");
+    }
+
+    const toggleTheme = () => {
+        const element = document.documentElement;
+        element.classList.toggle("dark");
+    };
+
+    const toggleButton = document.getElementById("themeToggle");
+    if (toggleButton != null) {
+        toggleButton.addEventListener("click", toggleTheme);
+    }
+</script>
