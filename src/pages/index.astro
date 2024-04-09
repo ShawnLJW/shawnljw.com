@@ -1,26 +1,27 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro"
 import Position from "../components/position.astro"
+import Footer from "../components/footer.astro"
 import experiences from "../data/experience.json"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Shawn Lee</title>
-	</head>
-	<body>
-		<h1>Shawn Lee</h1>
-		<h2>Machine Learning Engineer</h2>
+<BaseLayout title="Shawn Lee">
+	<div>
+		<h1 class="text-4xl font-bold">Shawn Lee</h1>
+		<h2 class="text-2xl font-semibold">Machine Learning Engineer</h2>
 		<p>I write code for deep neural networks.</p>
+		<a href="/resume.pdf">Resume</a>
+	</div>
 
-		<h3>About</h3>
+	<section id="about">
+		<h3 class="pt-5 text-lg font-medium">About</h3>
+		<p>Hi! I'm Shawn, a final-year Data Science student at Ngee Ann Polytechnic.</p>
 		<p>Nowadays, I mostly work on computer vision.</p>
 		<p>When I'm not coding, I volunteer.</p>
-		
-		<h3>Experience</h3>
+	</section>
+	
+	<section id="experience">
+		<h3 class="pt-5 text-lg font-medium">Experience</h3>
 		<ul>
 			{experiences.map((position) => 
 				<li>
@@ -34,6 +35,5 @@ import experiences from "../data/experience.json"
 				</li>
 			)}
 		</ul>
-		<a href="/resume.pdf">Resume</a>
-	</body>
-</html>
+	</section>
+</BaseLayout>

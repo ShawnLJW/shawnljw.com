@@ -1,4 +1,9 @@
-# Detecting Image Inpainting With Machine Learning
+---
+layout: ../../layouts/Markdown.astro
+title: Detecting Image Inpainting With Machine Learning
+---
+
+## Introduction
 
 ![Stalin and Nikolai Yezhov strolling along the Moscow-Volga Canal](../../assets/images/stalin_inpainting.jpg)
 

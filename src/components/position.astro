@@ -2,11 +2,9 @@
 const { title, company, startDate, endDate, description } = Astro.props;
 ---
 
-<div>
-    <span>{title}</span>
-    <span>{company}</span>
-    <span>{startDate}</span> - <span>{endDate}</span>
-</div>
-<div>
+<div class="py-1">
+    <p class="font-medium">{title}</p>
+    <p>{company}</p>
+    <p><span>{startDate}</span> - <span>{endDate}</span></p>
     <p>{description}</p>
 </div>
