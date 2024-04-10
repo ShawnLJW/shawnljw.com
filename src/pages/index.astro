@@ -3,25 +3,48 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import Position from "../components/position.astro"
 import Footer from "../components/Footer.astro"
 import experiences from "../data/experience.json"
+import { Icon } from 'astro-icon/components'
 ---
 
 <BaseLayout title="Shawn Lee">
 	<div>
 		<h1 class="text-4xl font-bold">Shawn Lee</h1>
-		<h2 class="text-2xl font-semibold">Machine Learning Engineer</h2>
+		<p class="text-2xl font-semibold">Machine Learning Engineer</p>
 		<p>I write code for deep neural networks.</p>
-		<a href="/resume.pdf">Resume</a>
+		<div class="flex gap-1 mt-5 items-center">
+			<a href="/resume.pdf" class="p-3 rounded-3xl text-white font-medium bg-orange-600">
+				View My Resume
+			</a>
+			<a
+				href="https://github.com/ShawnLJW"
+				title="View my GitHub profile"
+				aria-label="GitHub">
+				<Icon name="mdi:github" class="size-10" />
+			</a>
+			<a
+				href="https://www.linkedin.com/in/shawnljw/"
+				title="Connect with me on LinkedIn"
+				aria-label="LinkedIn">
+				<Icon name="mdi:linkedin" class="size-10" />
+			</a>
+			<a
+				href="mailto:contact@shawnljw.com"
+				title="Contact me"
+				aria-label="Email">
+				<Icon name="mdi:email" class="size-10" />
+			</a>
+		</div>
 	</div>
 
 	<section id="about">
-		<h3 class="pt-5 text-lg font-medium">About</h3>
+		<h2 class="pt-5 text-lg font-medium">About</h2>
 		<p>Hi! I'm Shawn, a final-year Data Science student at Ngee Ann Polytechnic.</p>
 		<p>Nowadays, I mostly work on computer vision.</p>
 		<p>When I'm not coding, I volunteer.</p>
 	</section>
 	
 	<section id="experience">
-		<h3 class="pt-5 text-lg font-medium">Experience</h3>
+		<h2 class="pt-5 text-lg font-medium">Experience</h2>
 		<ul>
 			{experiences.map((position) => 
 				<li>
