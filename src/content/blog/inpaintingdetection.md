@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/Markdown.astro
 title: Detecting Image Inpainting With Machine Learning
 ---
 

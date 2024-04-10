@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+import { getCollection } from 'astro:content';
+
+const allBlogPosts = await getCollection('blog');
+---
+
+<BaseLayout title="Shawn Lee | Blogs">
+    {allBlogPosts.map((post) => (
+        <div>
+            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+        </div>
+    ))}
+</BaseLayout>
