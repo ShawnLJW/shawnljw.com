@@ -2,11 +2,39 @@
 import { Icon } from 'astro-icon/components'
 ---
 
-<footer class="px-5 py-10 bg-zinc-200 dark:bg-zinc-800">
-    <h1 class="font-medium">Get in touch</h5>
-    <p></p>
-    <a href="mailto:contact@shawnljw.com" class="flex items-center">
-        <Icon name="mdi:email"/>
-        contact@shawnljw.com
-    </a>
+<footer class="grid md:grid-cols-3 gap-3 px-5 py-10 bg-zinc-200 dark:bg-zinc-800">
+    <div>
+        <h2 class="font-medium text-lg">Browse</h2>
+        <nav class="flex flex-col">
+            <a href="/">Home</a>
+            <a href="/blogs">Blogs</a>
+        </nav>
+    </div>
+    
+    <div>
+        <h2 class="font-medium text-lg">Contact</h2>
+        <p></p>
+        <a href="mailto:contact@shawnljw.com" class="flex items-center">
+            <Icon name="mdi:email"/>
+            contact@shawnljw.com
+        </a>
+        <div class="flex">
+            <a
+                href="https://github.com/ShawnLJW"
+                title="View my GitHub profile"
+                aria-label="GitHub">
+                <Icon name="mdi:github" class="size-8" />
+            </a>
+            <a
+                href="https://www.linkedin.com/in/shawnljw/"
+                title="Connect with me on LinkedIn"
+                aria-label="LinkedIn">
+                <Icon name="mdi:linkedin" class="size-8" />
+            </a>
+        </div>
+    </div>
+
+    <div>
+        <p class="text-zinc-700 dark:text-zinc-300">Lee Jia Wei, Shawn © 2024</p>
+    </div>
 </footer>
