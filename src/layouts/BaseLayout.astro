@@ -13,15 +13,16 @@ const { title } = Astro.props;
 		<title>{title}</title>
 
 		<script is:inline>
-			const element = document.documentElement;
-			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				element.classList.add("dark");
+			if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+				document.documentElement.classList.add("dark")
+			} else {
+				document.documentElement.classList.remove("dark")
 			}
 		</script>
 	</head>
 	<body class="flex flex-col min-h-screen dark:bg-zinc-900 dark:text-white transition-colors">
 		<Header />
-		<main class="px-5 py-10 mb-auto">
+		<main class="px-5 py-16 mb-auto">
             <slot />
         </main>
 		<Footer />

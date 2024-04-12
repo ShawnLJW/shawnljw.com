@@ -1,9 +1,67 @@
 ---
+import { Icon } from 'astro-icon/components'
 import ThemeButton from "./ThemeButton.astro"
 ---
 
-<header class="absolute">
-    <nav>
-        <ThemeButton />
-    </nav>
+<header id="navbar" class="w-screen fixed px-5 py-3 bg-white dark:bg-zinc-900 transition-[background-color,transform]">
+    <button
+        id="open-menu"
+        class="md:hidden float-right">
+        <Icon
+            name="mdi:hamburger-open"
+            class="size-10"/>
+    
+    </button>
+    <dialog id="menu" class="md:hidden block translate-x-full [&[open]]:translate-x-0 h-screen max-h-screen mr-0 dark:bg-zinc-900 dark:text-white transition-[background-color,transform]">
+        <div id="modal-container" class="size-full px-5 py-3">
+            <button id="close-menu">
+                <Icon
+                    name="mdi:hamburger-close"
+                    class="size-10"/>
+            </button>
+            <nav class="flex flex-col">
+                <a href="/" class="">Home</a>
+                <a href="/blogs" class="">Blog</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <span>Dark Mode</span>
+                <ThemeButton />
+            </div>
+        </div>
+    </dialog>
 </header>
+
+<script>
+    const navbar = document.getElementById("navbar") as HTMLElement;
+    const menu = document.getElementById("menu") as HTMLDialogElement;
+    const openMenuButton = document.getElementById("open-menu") as HTMLButtonElement;
+    const closeMenuButton = document.getElementById("close-menu") as HTMLButtonElement;
+
+    var prevScrollpos = window.scrollY;
+    window.onscroll = function() {
+        var currentScrollPos = window.scrollY;
+        if (prevScrollpos > currentScrollPos) {
+            navbar.classList.remove("-translate-y-full");
+        } else {
+            navbar.classList.add("-translate-y-full");
+        }
+        if (currentScrollPos == 0) {
+            navbar.classList.remove("shadow-lg");
+        } else {
+            navbar.classList.add("shadow-lg");
+        }
+        prevScrollpos = currentScrollPos;
+    }
+
+    openMenuButton.addEventListener("click", () => {
+        menu.showModal();
+    });
+    closeMenuButton.addEventListener("click", () => {
+        menu.close();
+    });
+    menu.addEventListener("click", (event) => {
+        if (event.target === menu) {
+            menu.close();
+        }
+    });
+</script>

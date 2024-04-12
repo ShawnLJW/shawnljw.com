@@ -1,14 +1,19 @@
 <button
     id="themeToggle"
-    aria-label="Toggle Dark Mode"
-    class="w-16 h-8 rounded-2xl shadow-inner bg-zinc-200 shadow-zinc-600 dark:bg-zinc-700">
-    <div class="w-8 h-8 rounded-2xl shadow-2xl shadow-black transition-transform bg-white dark:bg-zinc-100 dark:float-right"></div>
+    class="w-16 h-8 rounded-2xl shadow-inner shadow-zinc-600 bg-zinc-200 dark:bg-zinc-700">
+    <div class="w-8 h-8 rounded-2xl shadow-inner shadow-zinc-500 transition-transform bg-white dark:bg-zinc-100 dark:float-right"></div>
 </button>
 
 <script>
     const toggleTheme = () => {
         const element = document.documentElement;
-        element.classList.toggle("dark");
+        if (localStorage.theme === "dark") {
+            localStorage.theme = "light";
+            element.classList.remove("dark");
+        } else {
+            localStorage.theme = "dark";
+            element.classList.add("dark");
+        }
     };
 
     const toggleButton = document.getElementById("themeToggle");
