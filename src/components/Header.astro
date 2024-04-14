@@ -12,23 +12,7 @@ import ThemeButton from "./ThemeButton.astro"
             class="size-10"/>
     
     </button>
-    <dialog id="menu" class="md:hidden fixed block translate-x-full [&[open]]:translate-x-0 h-screen max-h-screen mr-0 dark:bg-zinc-900 dark:text-white transition-[background-color,transform]">
-        <div id="modal-container" class="size-full px-5 py-3">
-            <button id="close-menu">
-                <Icon
-                    name="mdi:hamburger-close"
-                    class="size-10"/>
-            </button>
-            <nav class="flex flex-col">
-                <a href="/" class="">Home</a>
-                <a href="/blogs" class="">Blog</a>
-            </nav>
-            <div class="flex items-center gap-3">
-                <span>Dark Mode</span>
-                <ThemeButton />
-            </div>
-        </div>
-    </dialog>
+    
     <div class="hidden md:flex max-w-screen-xl mx-auto px-20 py-3 items-center w-full">
         <nav class="flex grow gap-x-10">
             <a href="/" class="hover:text-zinc-600 dark:hover:text-zinc-300">Home</a>
@@ -40,6 +24,24 @@ import ThemeButton from "./ThemeButton.astro"
         </div>
     </div>
 </header>
+
+<dialog id="menu" class="md:hidden fixed block translate-x-full [&[open]]:translate-x-0 h-screen max-h-screen mr-0 dark:bg-zinc-900 dark:text-white transition-[background-color,transform]">
+    <div id="modal-container" class="size-full px-5 py-3">
+        <button id="close-menu">
+            <Icon
+                name="mdi:hamburger-close"
+                class="size-10"/>
+        </button>
+        <nav class="flex flex-col">
+            <a href="/" class="">Home</a>
+            <a href="/blogs" class="">Blog</a>
+        </nav>
+        <div class="flex items-center gap-3">
+            <span>Dark Mode</span>
+            <ThemeButton />
+        </div>
+    </div>
+</dialog>
 
 <script>
     const navbar = document.getElementById("navbar") as HTMLElement;
