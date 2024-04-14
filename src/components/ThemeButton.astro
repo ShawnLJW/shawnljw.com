@@ -1,5 +1,4 @@
-<button
-    id="themeToggle"
+<button theme-toggle
     class="w-16 h-8 rounded-2xl shadow-inner shadow-zinc-600 bg-zinc-200 dark:bg-zinc-700">
     <div class="w-8 h-8 rounded-2xl shadow-inner shadow-zinc-500 transition-transform bg-white dark:bg-zinc-100 dark:float-right"></div>
 </button>
@@ -16,8 +15,8 @@
         }
     };
 
-    const toggleButton = document.getElementById("themeToggle");
-    if (toggleButton != null) {
+    const buttons = document.querySelectorAll("[theme-toggle]");
+    buttons.forEach((toggleButton) => {
         toggleButton.addEventListener("click", toggleTheme);
-    }
+    });
 </script>

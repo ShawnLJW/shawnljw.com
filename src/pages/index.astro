@@ -11,42 +11,42 @@ const allExperiences = await getCollection("experience");
 ---
 
 <BaseLayout title="Shawn Lee">
-	<div class="">
+	<div class="flex flex-wrap items-center place-content-between gap-x-10">
 		<section>
-		<h1 class="text-4xl font-bold">Shawn Lee</h1>
-		<p class="text-2xl font-semibold">Machine Learning Engineer</p>
-		<p>I write code for deep neural networks.</p>
-		<div class="flex gap-1 mt-5 items-center">
-			<a href="/resume.pdf" class="p-3 rounded-3xl text-white font-medium bg-orange-600">
-				View My Resume
-			</a>
-			<a
-				href="https://github.com/ShawnLJW"
-				title="View my GitHub profile"
-				aria-label="GitHub">
-				<Icon name="mdi:github" class="size-10" />
-			</a>
-			<a
-				href="https://www.linkedin.com/in/shawnljw/"
-				title="Connect with me on LinkedIn"
-				aria-label="LinkedIn">
-				<Icon name="mdi:linkedin" class="size-10" />
-			</a>
-			<a
-				href="mailto:contact@shawnljw.com"
-				title="Contact me via email"
-				aria-label="Email">
-				<Icon name="mdi:email" class="size-10" />
-			</a>
-		</div>
-	</section>
+			<h1 class="text-4xl xl:text-6xl font-bold">Shawn Lee</h1>
+			<p class="text-2xl xl:text-4xl font-semibold">Machine Learning Engineer</p>
+			<p class="xl:text-lg xl:mt-1">I write code for deep neural networks.</p>
+			<div class="flex gap-1 mt-5 items-center">
+				<a href="/resume.pdf" class="p-3 rounded-3xl text-white font-medium bg-orange-600">
+					View My Resume
+				</a>
+				<a
+					href="https://github.com/ShawnLJW"
+					title="View my GitHub profile"
+					aria-label="GitHub">
+					<Icon name="mdi:github" class="size-10" />
+				</a>
+				<a
+					href="https://www.linkedin.com/in/shawnljw/"
+					title="Connect with me on LinkedIn"
+					aria-label="LinkedIn">
+					<Icon name="mdi:linkedin" class="size-10" />
+				</a>
+				<a
+					href="mailto:contact@shawnljw.com"
+					title="Contact me via email"
+					aria-label="Email">
+					<Icon name="mdi:email" class="size-10" />
+				</a>
+			</div>
+		</section>
 
-	<section id="about">
-		<h2 class="pt-5 text-lg font-medium">About</h2>
-		<Prose>
-			<AboutSection/>
-		</Prose>
-	</section>
+		<section id="about" class="max-w-xl">
+			<h2 class="pt-5 text-lg font-medium">About</h2>
+			<Prose>
+				<AboutSection/>
+			</Prose>
+		</section>
 	</div>
 	
 	

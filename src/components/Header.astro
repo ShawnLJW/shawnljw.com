@@ -3,10 +3,10 @@ import { Icon } from 'astro-icon/components'
 import ThemeButton from "./ThemeButton.astro"
 ---
 
-<header id="navbar" class="w-screen fixed px-5 py-3 bg-white dark:bg-zinc-900 transition-[background-color,transform]">
+<header id="navbar" class="w-screen fixed bg-white dark:bg-zinc-900 transition-[background-color,transform]">
     <button
         id="open-menu"
-        class="md:hidden float-right">
+        class="md:hidden float-right px-5 py-3">
         <Icon
             name="mdi:hamburger-open"
             class="size-10"/>
@@ -29,6 +29,16 @@ import ThemeButton from "./ThemeButton.astro"
             </div>
         </div>
     </dialog>
+    <div class="hidden md:flex max-w-screen-xl mx-auto px-20 py-3 items-center w-full">
+        <nav class="flex grow gap-x-10">
+            <a href="/" class="hover:text-zinc-600 dark:hover:text-zinc-300">Home</a>
+            <a href="/blogs" class="hover:text-zinc-600 dark:hover:text-zinc-300">Blog</a>
+        </nav>
+        <div class="flex items-center gap-3">
+            <span>Dark Mode</span>
+            <ThemeButton />
+        </div>
+    </div>
 </header>
 
 <script>

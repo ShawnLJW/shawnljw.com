@@ -6,6 +6,7 @@ const allBlogPosts = await getCollection('blog');
 ---
 
 <BaseLayout title="Shawn Lee | Blogs">
+    <h1 class="text-4xl xl:text-6xl font-bold mb-10">Blogs</h1>
     {allBlogPosts.map((post) => (
         <div>
             <a href={`/blog/${post.slug}`}>{post.data.title}</a>
