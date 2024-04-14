@@ -18,6 +18,7 @@
     "typescript": "^5.4.4"
   },
   "devDependencies": {
-    "@iconify-json/mdi": "^1.1.66"
+    "@iconify-json/mdi": "^1.1.66",
+    "@tailwindcss/typography": "^0.5.12"
   }
 }

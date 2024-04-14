@@ -1,12 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
-import Position from "../components/position.astro"
-import experiences from "../data/experience.json"
+import Experience from "../components/Experience.astro";
+import Prose from "../components/Prose.astro";
 import { Icon } from 'astro-icon/components'
+import { getCollection, getEntry } from 'astro:content';
+
+const about = await getEntry("misc", "about");
+const { Content: AboutSection } = await about.render();
+const allExperiences = await getCollection("experience");
 ---
 
 <BaseLayout title="Shawn Lee">
-	<div>
+	<div class="">
+		<section>
 		<h1 class="text-4xl font-bold">Shawn Lee</h1>
 		<p class="text-2xl font-semibold">Machine Learning Engineer</p>
 		<p>I write code for deep neural networks.</p>
@@ -33,27 +39,23 @@ import { Icon } from 'astro-icon/components'
 				<Icon name="mdi:email" class="size-10" />
 			</a>
 		</div>
-	</div>
+	</section>
 
 	<section id="about">
 		<h2 class="pt-5 text-lg font-medium">About</h2>
-		<p>Hi! I'm Shawn, a final-year Data Science student at Ngee Ann Polytechnic.</p>
-		<p>Nowadays, I mostly work on computer vision.</p>
-		<p>When I'm not coding, I volunteer.</p>
+		<Prose>
+			<AboutSection/>
+		</Prose>
 	</section>
+	</div>
+	
 	
 	<section id="experience">
 		<h2 class="pt-5 text-lg font-medium">Experience</h2>
 		<ul>
-			{experiences.map((position) => 
+			{allExperiences.map((experience) => 
 				<li>
-					<Position
-						title={position.title}
-						company={position.company}
-						startDate={position.startDate}
-						endDate={position.endDate}
-						description={position.description}
-					/>
+					<Experience experience={experience} />
 				</li>
 			)}
 		</ul>

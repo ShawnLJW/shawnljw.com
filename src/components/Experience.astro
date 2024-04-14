@@ -1,0 +1,25 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+import Prose from "./Prose.astro";
+const { experience } = Astro.props;
+const { Content } = await experience.render();
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/*.{jpeg,jpg,png,gif}');
+const imagePath = `/src/assets/images/${experience.slug}.jpg`;
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "/src/assets/images/*.{jpeg,jpg,png,gif}"`);
+const companyLogo = images[imagePath]();
+---
+
+<div class="flex items-center">
+    <Image src={companyLogo} alt={experience.data.company} class="size-16 mr-2 rounded-lg"/>
+    <div>
+        <h3 class="font-medium">{ experience.data.title }</h3>
+        <p>{experience.data.company}</p>
+        <p><span>{experience.data.startDate}</span> - <span>{experience.data.endDate}</span></p>
+    </div>
+</div>
+
+<Prose>
+    <Content />
+</Prose>
