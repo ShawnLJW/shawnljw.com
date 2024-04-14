@@ -3,16 +3,31 @@ import { Icon } from 'astro-icon/components'
 import ThemeButton from "./ThemeButton.astro"
 ---
 
-<header id="navbar" class="w-screen fixed bg-white dark:bg-zinc-900 transition-[background-color,transform]">
-    <button
-        id="open-menu"
-        class="md:hidden float-right px-5 py-3">
-        <Icon
-            name="mdi:hamburger-open"
-            class="size-10"/>
-    
-    </button>
-    <dialog id="menu" class="md:hidden block translate-x-full [&[open]]:translate-x-0 h-screen max-h-screen mr-0 dark:bg-zinc-900 dark:text-white transition-[background-color,transform]">
+<header class="w-screen fixed">
+    <div id="navbar" class="bg-white dark:bg-zinc-900 transition-[transform,color,background-color]">
+        <div class="flex md:hidden px-5 py-3">
+            <div class="grow"></div>
+            <button id="open-menu">
+                <Icon
+                    name="mdi:hamburger-open"
+                    class="size-10"/>
+            </button>
+        </div>
+        
+        
+        <div class="hidden md:flex max-w-screen-xl mx-auto px-20 py-3 items-center w-full">
+            <nav class="flex grow gap-x-10">
+                <a href="/" class="hover:text-zinc-600 dark:hover:text-zinc-300">Home</a>
+                <a href="/blogs" class="hover:text-zinc-600 dark:hover:text-zinc-300">Blog</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <span>Dark Mode</span>
+                <ThemeButton />
+            </div>
+        </div>
+    </div>
+
+    <dialog id="menu" class="md:hidden block pointer-events-none translate-x-full [&[open]]:translate-x-0 h-full max-h-none my-0 mr-0 dark:bg-zinc-900 dark:text-white transition-[background-color,transform]">
         <div id="modal-container" class="size-full px-5 py-3">
             <button id="close-menu">
                 <Icon
@@ -29,17 +44,8 @@ import ThemeButton from "./ThemeButton.astro"
             </div>
         </div>
     </dialog>
-    <div class="hidden md:flex max-w-screen-xl mx-auto px-20 py-3 items-center w-full">
-        <nav class="flex grow gap-x-10">
-            <a href="/" class="hover:text-zinc-600 dark:hover:text-zinc-300">Home</a>
-            <a href="/blogs" class="hover:text-zinc-600 dark:hover:text-zinc-300">Blog</a>
-        </nav>
-        <div class="flex items-center gap-3">
-            <span>Dark Mode</span>
-            <ThemeButton />
-        </div>
-    </div>
 </header>
+
 
 <script>
     const navbar = document.getElementById("navbar") as HTMLElement;
@@ -65,9 +71,11 @@ import ThemeButton from "./ThemeButton.astro"
 
     openMenuButton.addEventListener("click", () => {
         menu.showModal();
+        menu.classList.remove("pointer-events-none");
     });
     closeMenuButton.addEventListener("click", () => {
         menu.close();
+        menu.classList.add("pointer-events-none");
     });
     menu.addEventListener("click", (event) => {
         if (event.target === menu) {
