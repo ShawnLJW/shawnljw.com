@@ -1,8 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HighlightedButton from "../components/HighlightedButton.astro";
 import Experience from "../components/Experience.astro";
 import Prose from "../components/Prose.astro";
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 import { getCollection, getEntry } from 'astro:content';
 
 const about = await getEntry("misc", "about");
@@ -17,9 +18,7 @@ const allExperiences = await getCollection("experience");
 			<p class="text-2xl xl:text-4xl font-semibold">Machine Learning Engineer</p>
 			<p class="xl:text-lg xl:mt-1">I write code for deep neural networks.</p>
 			<div class="flex gap-1 mt-5 items-center">
-				<a href="/resume.pdf" class="p-3 rounded-3xl text-white font-medium bg-orange-600">
-					View My Resume
-				</a>
+				<HighlightedButton href="/resume.pdf">View My Resume</HighlightedButton>
 				<a
 					href="https://github.com/ShawnLJW"
 					target="_blank"
