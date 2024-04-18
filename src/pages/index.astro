@@ -1,14 +1,15 @@
 ---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HighlightedButton from "../components/HighlightedButton.astro";
-import Experience from "../components/Experience.astro";
 import Prose from "../components/Prose.astro";
-import { Icon } from 'astro-icon/components';
-import { getCollection, getEntry } from 'astro:content';
 
 const about = await getEntry("misc", "about");
 const { Content: AboutSection } = await about.render();
 const allExperiences = await getCollection("experience");
+const allCompanies = await getCollection("companies");
 ---
 
 <BaseLayout title="Shawn Lee">
@@ -54,11 +55,32 @@ const allExperiences = await getCollection("experience");
 	<section id="experience">
 		<h2 class="pt-5 text-lg font-medium">Experience</h2>
 		<ul>
-			{allExperiences.map((experience) => 
-				<li>
-					<Experience experience={experience} />
-				</li>
-			)}
+			{allExperiences.map(async (experience) => {
+				const company = await getEntry(experience.data.company);
+				const { Content: Description } = await experience.render();
+				return (
+					<li>
+						<div class="flex items-center">
+							<Image
+								src={company.data.logo}
+								alt={company.data.name}
+								class="size-16 mr-2 rounded-lg"/>
+							<div>
+								<h3 class="font-medium">{ experience.data.title }</h3>
+								<p>{company.data.name}</p>
+								<p>
+									{experience.data.startDate.toLocaleDateString('en-us', { year:"numeric", month:"short"})} -
+									{experience.data.endDate.toLocaleDateString('en-us', { year:"numeric", month:"short"})}
+								</p>
+							</div>
+						</div>
+						
+						<Prose>
+							<Description />
+						</Prose>
+					</li>
+				);
+			})}
 		</ul>
 	</section>
 </BaseLayout>
