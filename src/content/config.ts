@@ -1,9 +1,12 @@
+import { date } from "astro/zod";
 import { defineCollection, reference, z } from "astro:content";
 
 const blog = defineCollection({
     type: "content",
     schema: z.object({
         title: z.string(),
+        date: z.date(),
+        description: z.string(),
     }),
 });
 
